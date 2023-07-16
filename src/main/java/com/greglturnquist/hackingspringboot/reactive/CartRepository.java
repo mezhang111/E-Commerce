@@ -1,9 +1,9 @@
 package com.greglturnquist.hackingspringboot.reactive;
 
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.stereotype.Repository;
 
-// tag::code[]
+@Repository
 public interface CartRepository extends ReactiveCrudRepository<Cart, String> {
 
 }
-// end::code[]

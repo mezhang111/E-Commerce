@@ -6,14 +6,20 @@ class CartItem {
 
     private Item item;
     private int quantity;
+
     private CartItem() {}
 
     CartItem(Item item) {
         this.item = item;
         this.quantity = 1;
     }
+
     public void increment() {
         this.quantity++;
+    }
+
+    public void decrement() {
+        this.quantity--;
     }
 
     public Item getItem() {
@@ -34,10 +40,8 @@ class CartItem {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         CartItem cartItem = (CartItem) o;
         return quantity == cartItem.quantity && Objects.equals(item, cartItem.item);
     }

@@ -4,28 +4,22 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 
-// tag::code[]
 public class Item {
 
     private @Id String id;
     private String name;
     private String description;
     private double price;
-
     private Item() {}
-
-    // public Item(String name, double price) {
-    // 	this.name = name;
-    // 	this.price = price;
-    // }
-
-    public Item(String name, String description, double price) {
+    Item(String name, String description, double price) {
         this.name = name;
-        this.price = price;
         this.description = description;
+        this.price = price;
     }
-    // end::code[]
-
+    Item(String id, String name, String description, double price) {
+        this(name, description, price);
+        this.id = id;
+    }
     public String getId() {
         return id;
     }
@@ -41,7 +35,6 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getDescription() {
         return description;
     }
@@ -49,7 +42,6 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
-
     public double getPrice() {
         return price;
     }
@@ -65,16 +57,18 @@ public class Item {
         if (o == null || getClass() != o.getClass())
             return false;
         Item item = (Item) o;
-        return Double.compare(item.price, price) == 0 && Objects.equals(id, item.id) && Objects.equals(name, item.name);
+        return Double.compare(item.price, price) == 0 && Objects.equals(id, item.id) &&
+                Objects.equals(name, item.name) && Objects.equals(description, item.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price);
+        return Objects.hash(id, name, description, price);
     }
 
     @Override
     public String toString() {
-        return "Item{" + "id=" + id + ", name='" + name + '\'' + ", price=" + price + '}';
+        return "Item{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", description='" + description + '\'' + ", price="
+                + price + '}';
     }
 }

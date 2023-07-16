@@ -1,0 +1,7 @@
+= Hacking with Spring Boot API Portal
+
+When you create a web service, developers want to see how to use it. Thanks to Spring
+REST Docs, you can generate all the interactions needed via test cases that in turn
+generate readable documentation. A match made in heaven, or at least, in your IDE.
+
+By running the following request:
